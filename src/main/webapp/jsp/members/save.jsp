@@ -27,7 +27,7 @@
     <li> id=<%=member.getId()%>  </li>
     <li> username=<%=member.getUsername()%>  </li>
 </ul>
-<a href="/index.html" target="_blank" > 메인 </a>
+<a href="/index.html" target="_blank" > 메인 commit test </a>
 
 </body>
 </html>
