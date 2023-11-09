@@ -9,18 +9,21 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 public class MemberListControllerV2 implements ControllerV2
 {
+
     MemberRepository memberRepository = MemberRepository.getInstance();
     @Override
-    public MyView process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public MyView process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        List<Member> members = memberRepository.findAll();
-        req.setAttribute("members", members);
+        String username = request.getParameter("username");
+        int age = Integer.parseInt(request.getParameter("age"));
 
-        return new MyView("/WEB-INF/members.jsp");
+        Member member = new Member(username, age);
+        memberRepository.save(member);
 
+        request.setAttribute("member", member);
+        return new MyView("/WEB-INF/views/save-result.jsp");
     }
 }
