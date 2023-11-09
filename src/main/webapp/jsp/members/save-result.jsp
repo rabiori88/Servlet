@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="hello.servelet.domain.member.Member" %>
 <%@ page import="hello.servelet.domain.member.MemberRepository" %><%--
   Created by IntelliJ IDEA.
@@ -6,7 +7,7 @@
   Time: 2:34 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8"  %>
 <%
     MemberRepository memberRepository = MemberRepository.getInstance();
 
@@ -27,7 +28,7 @@
     <li> id=<%=member.getId()%>  </li>
     <li> username=<%=member.getUsername()%>  </li>
 </ul>
-<a href="/index.html" target="_blank" > 메인 commit testdd </a>
+<a href="<c:url value="/index.html"/>" target="_blank" > 메인 commit testdd </a>
 
 </body>
 </html>
