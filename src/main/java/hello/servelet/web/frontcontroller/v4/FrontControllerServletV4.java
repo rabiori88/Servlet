@@ -1,12 +1,10 @@
 package hello.servelet.web.frontcontroller.v4;
 
 
-import hello.servelet.web.frontcontroller.ModelView;
 import hello.servelet.web.frontcontroller.MyView;
 import hello.servelet.web.frontcontroller.v4.Controller.MemberFormControllerV4;
 import hello.servelet.web.frontcontroller.v4.Controller.MemberListControllerV4;
 import hello.servelet.web.frontcontroller.v4.Controller.MemberSaveControllerV4;
-import hello.servelet.web.frontcontroller.v4.ControllerV4;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,15 +15,15 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet(name="frontControllderServletV4", urlPatterns = "/front-controller/v4/*")
+@WebServlet(name="frontControllerServletV4", urlPatterns = "/front-controller/v4/*")
 public class FrontControllerServletV4 extends HttpServlet {
 
-    private final Map<String , ControllerV4> controllerV3Map = new HashMap<>();
+    private final Map<String , ControllerV4> controllerV4Map = new HashMap<>();
 
     public FrontControllerServletV4() {
-        controllerV3Map.put("/front-controller/v4/members/new-form", new MemberFormControllerV4());
-        controllerV3Map.put("/front-controller/v4/members/save", new MemberSaveControllerV4());
-        controllerV3Map.put("/front-controller/v4/members", new MemberListControllerV4());
+        controllerV4Map.put("/front-controller/v4/members/new-form", new MemberFormControllerV4());
+        controllerV4Map.put("/front-controller/v4/members/save", new MemberSaveControllerV4());
+        controllerV4Map.put("/front-controller/v4/members", new MemberListControllerV4());
     }
 
     @Override
@@ -34,7 +32,7 @@ public class FrontControllerServletV4 extends HttpServlet {
 
         String requestURI = request.getRequestURI();
 
-        ControllerV4 controller = controllerV3Map.get(requestURI);
+        ControllerV4 controller = controllerV4Map.get(requestURI);
 
         if(controller == null) {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
