@@ -1,5 +1,7 @@
 package hello.servelet.domain.member;
 
+import lombok.Getter;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,11 +13,9 @@ public class MemberRepository {
     private static Map<Long, Member> store = new HashMap<>();
     private static long seq = 0L;
 
+    @Getter
     private static final MemberRepository instance = new MemberRepository();
 
-    public static MemberRepository getInstance() {
-        return instance;
-    }
     private MemberRepository() {
 
     }
